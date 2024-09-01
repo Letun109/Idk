@@ -1,5 +1,4 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
-
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 workspace.Lobby:GetChildren()[39].SurfaceGui.SIGN.Text = "FatalBone: 1886 Wins"
 
@@ -13,11 +12,13 @@ workspace.Lobby["Random "]:GetChildren()[131].SurfaceGui.SIGN.Text = "Error404: 
 local posit = workspace.jojo_mk24.HumanoidRootPart
 local monetka = false
 
-local Window = Library.CreateLib("Четы", "RJTheme3")
+local Window = OrionLib:MakeWindow({Name = "Undertale: JD", HidePremium = false, SaveConfig = true, IntroEnabled = true})
 
-local Tab = Window:NewTab("Главная")
-
-local Section = Tab:NewSection("Телепорты")
+local Tab = Window:MakeTab({
+    Name = "Autofarm",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
 -- Ломка
 workspace.FlingPart:Destroy()
@@ -43,15 +44,18 @@ workspace.Lobby["Random "]:GetChildren()[78]:Destroy()
 
 
 
-Section:NewButton("Телепорт", "Просто телепорт", function()
-    if monetka == true then
-        monetka = false
-    elseif monetka == false then
-        monetka = true
-    end
+Tab:AddButton({
+    Name = "Autofarm coins",
+    Callback = function()
+        if monetka == true then
+            monetka = false
+        elseif monetka == false then
+            monetka = true
+        end
 
-    while monetka == true do
-        posit.CFrame = workspace.Lobby.Fountain.CFrame
-        wait(0.5)
+        while monetka == true do
+            posit.CFrame = workspace.Lobby.Fountain.CFrame
+            wait(0.5)
+        end
     end
-end)
+})
