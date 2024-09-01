@@ -1,0 +1,67 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Player = game.Players.LocalPlayer
+
+local Window = OrionLib:MakeWindow({Name = "Key system", HidePremium = false, SaveConfig = true, IntroEnabled = false})
+
+
+OrionLib:MakeNotification({
+    Name = "Logged in!",
+    Content = "You are logged in as "..Player.Name..".",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+_G.Key = "Key_Dj2281hxJwhH6"
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Letun109/Idk/main/UJD.lua"))()
+end
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Correct key!",
+        Content = "You have entered the correct key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function IncorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Incorrect key! :(",
+        Content = "You have entered the incorrect key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+local Tab = Window:MakeTab({
+    Name = "Key",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddTextbox({
+    Name = "Key",
+    Default = "Input",
+    TextDisappear = true,
+    Callback = function(Value)
+        _G.KeyInput = Value
+    end	  
+})
+
+Tab:AddButton({
+    Name = "Check key",
+    Callback = function()
+        if _G.Key == _G.KeyInput then
+            MakeScriptHub()
+            CorrectKeyNotification()
+        else
+            IncorrectKeyNotification()
+        end
+    end    
+})
+
+Tab:AddParagraph("https://link-center.net/1226770/ujd-key","Go to this site for the key")
